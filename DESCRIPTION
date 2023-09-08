@@ -1,0 +1,10 @@
+Package: MATH4753mcco0211Fall2023
+Type: Package
+Title: MATH 4753 Functions
+Version: 0.1.0
+Author: Lane McCoy
+Maintainer: Lane McCoy <lanemccoy2024@gmail.com>
+Description: Lab functions we use in MATH 4753.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
