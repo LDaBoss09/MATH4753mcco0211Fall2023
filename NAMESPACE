@@ -2,5 +2,6 @@
 
 export(myfun)
 export(myncurve)
+export(ntickets)
 export(sample_sim)
 export(scatterhist)
