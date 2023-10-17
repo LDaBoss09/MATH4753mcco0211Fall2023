@@ -15,6 +15,7 @@
 #' @examples
 #' myncurve(a=6, mu=10, sigma=4, col="red")
 myncurve = function(a, mu, sigma, col="red"){
+  x <- NULL
   #Plot the curve
   curve(dnorm(x, mean=mu, sd=sigma), xlim=c((mu - 3*sigma), (mu + 3*sigma)))
   #Add the shaded area
