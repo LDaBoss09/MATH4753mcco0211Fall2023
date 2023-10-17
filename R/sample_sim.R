@@ -7,6 +7,8 @@
 #'
 #' @return A plot of proportions of x selected in each individual iteration
 #' @export
+#' @importFrom grDevices rainbow
+#' @importFrom graphics barplot
 #'
 #' @examples
 #' sample_sim(x=10, n=100, iter=10, time=0.5)

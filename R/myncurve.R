@@ -7,6 +7,10 @@
 #'
 #' @return A plot with the shaded area up to a and P(Y<=a)
 #' @export
+#' @importFrom graphics curve
+#' @importFrom graphics polygon
+#' @importFrom stats pnorm
+#' @importFrom stats dnorm
 #'
 #' @examples
 #' myncurve(a=6, mu=10, sigma=4, col="red")

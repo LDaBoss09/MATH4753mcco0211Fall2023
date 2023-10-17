@@ -7,6 +7,10 @@
 #'
 #' @return A scatter-histogram sophisticated plot
 #' @export
+#' @importFrom graphics hist
+#' @importFrom graphics layout
+#' @importFrom graphics par
+#' @importFrom graphics mtext
 #'
 #' @examples
 #' \dontrun{with(spr, scatterhist(BHDiameter, Height, xlab="BHDiameter"))}

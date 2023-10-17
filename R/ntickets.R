@@ -6,6 +6,11 @@
 #'
 #' @return A named list containing all parameters and two plots displaying the optimal number of tickets (n) to sell for a discrete distribution and continuous approximation
 #' @export
+#' @importFrom stats qbinom
+#' @importFrom stats uniroot
+#' @importFrom stats pbinom
+#' @importFrom graphics abline
+#' @importFrom graphics title
 #'
 #' @examples
 #' ntickets(N=200, gamma=0.02, p=0.95)
