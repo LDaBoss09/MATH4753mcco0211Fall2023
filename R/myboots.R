@@ -9,14 +9,17 @@
 #'
 #' @return A histogram of the sample statistics for each iteration followed by a point estimate for the population parameter and a 100(1-alpha)% confidence interval for the same parameter. Also a list of confidence intervals, functions, and samples.
 #' @export
+#' @importFrom graphics segments
+#' @importFrom graphics text
+#' @importFrom stats quantile
 #'
 #' @examples
-#' myboots(iter=10000, x, fun='mean', alpha=0.05, cx=1.5)
+#' myboots(iter=10000, x=c(1,2,3,4,5,6,7,8,9,10), fun='mean', alpha=0.05, cx=1.5)
 myboots<-function(iter=10000,x,fun="mean",alpha=0.05,cx=1.5,...){
   n=length(x)   #sample size
 
   y=sample(x,n*iter,replace=TRUE)
-  rs.mat=matrix(y,nr=n,nc=iter,byrow=TRUE)
+  rs.mat=matrix(y,nrow=n,ncol=iter,byrow=TRUE)
   xstat=apply(rs.mat,2,fun) # xstat is a vector and will have iter values in it
   ci=quantile(xstat,c(alpha/2,1-alpha/2))# Nice way to form a confidence interval
   # A histogram follows
@@ -26,7 +29,7 @@ myboots<-function(iter=10000,x,fun="mean",alpha=0.05,cx=1.5,...){
             ...)
 
   #mat will be a matrix that contains the data, this is done so that I can use apply()
-  mat=matrix(x,nr=length(x),nc=1,byrow=TRUE)
+  mat=matrix(x,nrow=length(x),ncol=1,byrow=TRUE)
 
   #pte is the point estimate
   #This uses whatever fun is
