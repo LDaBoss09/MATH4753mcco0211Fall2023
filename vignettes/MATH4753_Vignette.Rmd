@@ -1,0 +1,84 @@
+---
+title: "MATH4753_Vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{MATH4753_Vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(MATH4753mcco0211Fall2023)
+```
+
+# Introduction
+
+This package was created as part of the curriculum requirements for MATH 4753: Applied Statistical Methods. Within this package, there are various miscellaneous functions and one data set. Each function has a unique goal in mind and was packaged as we learned the corresponding theory. While there is no centralized 'theme' surrounding this package, there are a majority of functions that could prove useful in certain circumstances.
+
+## Myboots() Function
+
+The myboots function is designed to perform bootstrap sampling of a certain parameter and produce a histogram of the results, along with a confidence interval for the true parameter. The parameter desired can be either within base R, or designed with unique functions. An example with the fire data set is provided:
+```{r}
+data(fire)
+with(fire, myboots(iter=10000, DAMAGE, fun='mean', alpha=0.05, cx=1.5, col=rainbow(9))) #not all options or displays are necessary, some are by default
+```
+
+## MyCI() Function
+
+The MyCI function is designed to take any data set and construct a confidence interval for the mean of any level selected by the user. It is only designed to be used with one data set, and it only produces the confidence interval for a population mean. An example with the fire data included in this package is shown below:
+```{r}
+with(fire, myci(DAMAGE, conf.level=0.8)) #any dataset will work
+```
+
+## MyCLTP() Function
+
+The MyCLTP function is designed to display the Central Limit Theorem by plotting calculated values of lambda taken from random samples of a given population parameter. It will also return the probability function for the Poisson distribution and a barplot of the sampled y values. This shows that when n is sufficiently large for a Poisson distribution, the distribution of sample lambdas will take on a normal curve. This function only works for Poisson distributions. An example is shown below:
+```{r}
+#Set figure size margins
+par(mar=c(1,1,1,1))
+mycltp(n=500, iter=10000, lambda = 5) #everything in this case can be altered
+```
+
+## MyFun() Function
+
+The first function to be introduced to this package, this function simply takes a vector of components as an argument and returns a vector of equal length with each component individually squared. An example is shown below:
+```{r}
+#myfun
+myfun(2:23)
+```
+
+## MyMaxLik() Function
+
+The mymaxlik function is designed to produce a maximum likelihood estimate for any distribution or function that can be written out in R. First, one must input a function using the d-stem distribution for a given probability function. From this function, one can put in a sequence of parameters for the function to choose from as well as a collection of observatinoal values before it will plot the log function and return the maximum likelihood estimate. Furthermore, it will also return i and other values related to i.
+```{r}
+#Create the lfun for a binomial
+fun = function(x, param){
+  log(dbinom(x, size=30, prob=param))
+}
+#Execute mymaxlik
+mymaxlik(lfun=fun, x=c(5,4,5,7,8,6), param=seq(0,1, length=10000))
+```
+
+## MyNCurve() Function
+
+This function will take a list of parameters and create a plot of a normal distribution curve with the given parameters. Furthermore, it will also shade under the curve up to a given value and calculate the total probability that encompasses the shaded area. This function will only perform lower tails and accept parameters for normal distribution curves. An example is shown below:
+```{r}
+myncurve(a=2, mu=5, sigma=3, col='blue')
+```
+
+## NTickets() Function
+
+This function was built to solve the overbooking problem, which determines the optimal number of tickets an airline should sell when they have a finite number of seats on the plane and a desired probability of overbooking (while also knowing the probability that a passenger shows up). This function works by optimizing the function and finding the roots that give the desired solution to the function. This function was also designed to give the results for the binomial distribution, but also for a normal approximation to the binomial. All results are displayed graphically and returned in a list. An example is shown below:
+```{r}
+ntickets(N=200, gamma = 0.02, p=0.95)
+```
+
+
+
