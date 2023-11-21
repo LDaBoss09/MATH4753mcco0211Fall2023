@@ -34,7 +34,7 @@ with(fire, myboots(iter=10000, DAMAGE, fun='mean', alpha=0.05, cx=1.5, col=rainb
 
 The MyCI function is designed to take any data set and construct a confidence interval for the mean of any level selected by the user. It is only designed to be used with one data set, and it only produces the confidence interval for a population mean. An example with the fire data included in this package is shown below:
 ```{r}
-with(fire, myci(DAMAGE, conf.level=0.8)) #any dataset will work
+with(fire, myci(DAMAGE, conf.level=0.95)) #any dataset will work
 ```
 
 ## MyCLTP() Function
